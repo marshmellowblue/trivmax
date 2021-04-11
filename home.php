@@ -1,12 +1,28 @@
 <html>
 <head>
-	<title>Lettura dal DB</title>
+    <link rel="stylesheet" href="home.css"/>
+	<title>TRIVIAMAX</title>
 </head>
 <body>
+
+	<h1>Home Progetto</h1>
+	<br>
+	<h2>Forza che aspetti, clicca Play a match</h2>
+	<br>
+	<ul>
+		<li><a href="\\">Home</a></li>
+		<li><a href="./site1/Home.html">contatti</a></li>
+		<li><a href="contact.asp">Progetto Giudice</a></li>
+		<li><a href="partita.php">Play a Match</a></li>
+	</ul>
+	
+
 
 <?php
 	$cookie_name = $_POST['nickname'];
 	$cookie_value =  $_POST['nomeLobby'];
+	 
+	
 
 	//setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 	setcookie($cookie_name, $cookie_value, strtotime("+1 year"));
@@ -61,7 +77,7 @@
 	}else{
 		echo "benvenuto giocatore ".$nickname."<br>";
 
-			$getGiocatori= "SELECT nickname  FROM server1 where nomeLobby='$nomeLobby' "; //ti dice con chi sei in team
+			/*$getGiocatori= "SELECT nickname  FROM server1 where nomeLobby='$nomeLobby' "; //ti dice con chi sei in team
 			$prendiGiocatori=$conn->query($getGiocatori);
 			echo "in lobby ci sono: <br>";
 			while ($tupla = $prendiGiocatori -> fetch_assoc()) {
@@ -91,24 +107,32 @@
 			
 			//echo"".$prendiDomanda."<br>";
 			//$tupla = $prendiDomanda->fetch_assoc();
-			echo "<br>".$scriviDomanda["domanda"];
+			echo"<br>".$scriviDomanda["domanda"];
 			/*echo"<br>".$scrivirisposta["risposta1"];
 			echo"<br>".$scrivirisposta2["risposta2"];
 			echo"<br>".$scrivirisposta3["risposta3"];
 			echo"<br>".$scrivirisposta4["risposta4"];	*/		
 			
-			echo "<br><form action=\"vittoria.php\" method=\"POST\">";
+			//serve per gestire le risposte
+			/*
+			echo "<br><form action=\"new 1.php\" method=\"POST\">";
 			echo "<br> <input type=\"checkbox\" name=\"autori[]\" value=\"".$scrivirisposta["risposta1"]."\">";
-			echo "".$scrivirisposta["risposta1"];
+			echo"".$scrivirisposta["risposta1"];
 			echo "<br> <input type=\"checkbox\" name=\"autori[]\" value=\"".$scrivirisposta2["risposta2"]."\">";
-			echo "".$scrivirisposta2["risposta2"];
+			echo"".$scrivirisposta2["risposta2"];
 			echo "<br> <input type=\"checkbox\" name=\"autori[]\" value=\"".$scrivirisposta3["risposta3"]."\">";
-			echo "".$scrivirisposta3["risposta3"];
+			echo"".$scrivirisposta3["risposta3"];
 			echo "<br> <input type=\"checkbox\" name=\"autori[]\" value=\"".$scrivirisposta4["risposta4"]."\">";
-			echo "".$scrivirisposta4["risposta4"];
+			echo"".$scrivirisposta4["risposta4"];
 			echo "<br> <input type=\"Submit\" value=\"Invio\"/>";
+			*/
 	}		
-	$conn->close();
+
+	 $conn->close();
 ?>
+
+
+</table>
+</form>
 </body>
 </html>

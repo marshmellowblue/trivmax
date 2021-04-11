@@ -1,7 +1,14 @@
 <html>
-<head><title>HOME</title></head>
+<head><link rel="stylesheet" href="home.css"/><title>HOME</title></head>
 <body>
-</br>
+	<p>ora che sei registrato ti conviene fare il sign-in
+	<ul>
+		<li><a href="index.html">login</a></li>
+		<li><a href="./site1/Home.html">contatti</a></li>
+		<li><a href="\\">Progetto Giudice</a></li>
+		
+	</ul>
+ </br>
 
 <?php
 	$cookie_name = $_POST['nome'];
@@ -84,6 +91,8 @@
 	
 ?>
 
-<a href="index.html">Home</a>
+
 </body>
+
+<a href="index.html">Home</a>
 </html>
