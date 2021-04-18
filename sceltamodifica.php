@@ -11,9 +11,9 @@
     <br>
     <br>
     <ul>
-		<li><a href="home.php">Home</a></li>
+		<li><a href="home.php" onclick="self.status=document.referrer;return true">Home</a></li>
 		<li><a href="./site1/Home.html">contatti</a></li>
-		<li><a href="contact.asp">Progetto Giudice</a></li>
+		<li><a href="./progetto/progetto.html">Progetto Giudice</a></li>
 		<li><a href="partita.php">Play a Match</a></li>
 	</ul>
 <?php

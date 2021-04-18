@@ -2,15 +2,10 @@
 <head><title>page</title><link rel="stylesheet" href="home.css"/></head>
 <body>
 </br>
-    <ul>
-		<li><a href="home.php">Home</a></li>
-		<li><a href="./site1/Home.html">contatti</a></li>
-		<li><a href="contact.asp">Progetto Giudice</a></li>
-		<li><a href="partita.php">Play a Match</a></li>
-	</ul>
+    
 	<br>
 	<br>
-
+	<li><a href="home.php" >Home</a></li>
 	<br>
 
 <?php

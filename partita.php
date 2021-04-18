@@ -1,6 +1,6 @@
 <html>
 <head>
-	
+<link rel="stylesheet" href="home.css"/>
 	
 </head>
 <body>
@@ -8,21 +8,17 @@
 	
 
 <?php
-   /* $cookie_name = $_POST['nickname'];
-	$cookie_value =  $_POST['nomeLobby'];
+  session_start();
+  echo	$_SESSION['nickname'] ;
+  echo '<br>'.$_SESSION['nomeLobby']  ; 
+ 
 
-	//setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-	setcookie($cookie_name, $cookie_value, strtotime("+1 year"));
-
-    if(!isset($_COOKIE[$cookie_name])) {
-		echo "<br>Cookie named '" . $cookie_name . "' is not set! <br> probably your session is over or you have probably did a mistake <br>";
-	} else {
-		//echo "Cookie '" . $cookie_name . "' is set!<br>";
-		echo ""."i've setted all "."<br><br>";
-		//echo "Value is: " . $_COOKIE[$cookie_name]."<br>";
-		//echo "so anche che il tuo id è :".$row["ID"]."<br>";
-	}
-		*/
+  echo' <ul>
+		<li><a href="home.php">Home</a></li>
+		<li><a href="./site1/Home.html">contatti</a></li>
+		<li><a href="./progetto/progetto.html">Progetto Giudice</a></li>
+		
+	   </ul>';
 
     $servername = "localhost";
 	$username = "root";
@@ -40,13 +36,13 @@
 
 <?php
     
-			$numericasuali= rand(1,8) ; //controllo se il numero è gia stato preso per non farlo ripetere due volte di fila.
+			$numericasuali= rand(1,13) ; //controllo se il numero è gia stato preso per non farlo ripetere due volte di fila.
 			$controllo=0;
 			//controllo per non farlo ripetere piu diu una volta 
 			//e infine mettere la possibilkità di mandare avanti le domande
 			
 			if($numericasuali==$controllo){
-				$numericasuali= rand(1,8) ;
+				$numericasuali= rand(1,13) ;
 			}else{
 				$controllo=$numericasuali;
 			}
@@ -102,11 +98,15 @@
 </table>
 </form>
 	<p>secondi rimasri : </p><div id="countdown"></div>
+	<div id="punizione">
+		
+	</div>
 
 	<script>
 		
-		/*
-		var difficoltaDomanda=Math.floor(Math.random() * 2) + 0;
+		
+		var difficoltaDomanda=Math.floor(Math.random() * 3); 
+		var punizione=Math.floor(Math.random() * 9); 
 		var lunghezzaTimer=0;
 		
 		
@@ -140,15 +140,43 @@
 				}
 				if(timeLeft==0){
 					alert('Tempo scaduto!!!');
-					document.getElementById("countdown").innerHTML = "hai perso ora devi avere una punizione adeguata";
+					document.getElementById("countdown").innerHTML = "hai perso ora devi avere una punizione adeguata <br> <input type=\"button\" value=\"NEXT QUESTION\" onclick=\"window.location.reload()\"><br>aspetta il tuo turno per ricaricare la pagina con la prossima domanda</input><br><br>";
+					if(punizione==0){
+						document.getElementById("punizione").innerHTML = "la tua punizione sarà di tornare indietro di 2 caselle";
+					}
+					if(punizione==1){
+						document.getElementById("punizione").innerHTML = "la tua punizione sarà di andare in prigione per un turno";
+					}
+					if(punizione==2){
+						document.getElementById("punizione").innerHTML = "la tua punizione sarà di andare infilarti un dito nel naso per i prossimi due turni";
+					}
+					if(punizione==3){
+						document.getElementById("punizione").innerHTML = "la tua punizione sarà diretrocedere di ben 3 caselle";
+					}
+					if(punizione==4){
+						document.getElementById("punizione").innerHTML = "la tua punizione sarà di saltellare su un piede per 4 volte";
+					}
+					if(punizione==5){
+						document.getElementById("punizione").innerHTML = "la tua punizione sarà di effettuare quattro piegamenti sulle braccia";
+					}
+					if(punizione==6){
+						document.getElementById("punizione").innerHTML = "la tua punizione sarà di andare in prigione per due turni";
+					}
+					if(punizione==7){
+						document.getElementById("punizione").innerHTML = "la tua punizione sarà di fare due giri in torno a te e i tuoi compagni dovranno prenderti in giro";
+					}
+					
+					if(punizione==8){
+						document.getElementById("punizione").innerHTML = "la tua punizione sarà di dover effettuare un prova fisica a tua scelta";	
+					}
 				}
-				if(timeLeft<=0){
-					clearInterval(countDownInterval);
-				}
+						if(timeLeft<=0){
+							clearInterval(countDownInterval);
+						}
 				
 			},1000);
-			*/
-
+			
+			
 	</script>
 </body>
 

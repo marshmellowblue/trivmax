@@ -1,21 +1,27 @@
 <html>
 <head><link rel="stylesheet" href="home.css"/><title>HOME</title></head>
 <body>
-	<p>ora che sei registrato ti conviene fare il sign-in
-	<ul>
-		<li><a href="index.html">login</a></li>
-		<li><a href="./site1/Home.html">contatti</a></li>
-		<li><a href="\\">Progetto Giudice</a></li>
-		
-	</ul>
- </br>
+	
+	
+ 
 
 <?php
-	$cookie_name = $_POST['nome'];
-	$cookie_value =  $_POST['nomeLobby'];
-	setcookie($cookie_name, $cookie_value, strtotime("+1 year"));
+	session_start();
+	$_SESSION['nome'] = $_POST['nome'];
+	$_SESSION['nomeLobby']   = $_POST['nomeLobby'];
+	$_SESSION['nickname']=$_POST['nickname'];
+	$_SESSION['cognome'] = $_POST['cognome'];
 
-	//setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+	echo '<br /><ul>
+					<li><a href="index.html">login</a></li>
+					<li><a href="./site1/Home.html">contatti</a></li>
+					<li><a href="./progetto/progetto.html">Progetto Giudice</a></li>
+					<li><a href="home.php">home</a></li>
+		</ul>';
+
+	
+
+	
 
 	$servername = "localhost";
 	$username = "root";
@@ -36,10 +42,10 @@
 
 
 	// recupero i valori di NOME e INDIRIZZO e li assegno alle variabili $name e $address
-	$nome = $_POST['nome'];
-	$cognome = $_POST['cognome'];
-	$nickname = $_POST['nickname'];
-	$nomeLobby = $_POST['nomeLobby'];
+	$nome = $_SESSION['nome'];
+	$cognome = $_SESSION['cognome'];
+	$nickname = $_SESSION['nickname'];
+	$nomeLobby =$_SESSION['nomeLobby'];
 
 	$query= "SELECT * FROM server1 where `nomeLobby`='$nomeLobby' AND `nickname`='$nickname' ";
 	$resultprova=$conn->query($query);
@@ -58,15 +64,7 @@
 
 		echo "BENVENUTO GIOCATORE ".$nome ." ".$cognome."<br>";
 		//controllo del cookie
-		if(!isset($_COOKIE[$cookie_name])) {
-			echo "<br>Cookie named '" . $cookie_name . "' is not set! <br> probably your session is over or you have probably did a mistake <br>";
-		  } else {
-			//echo "Cookie '" . $cookie_name . "' is set!<br>";
-			echo "i've setted all "."<br><br><br>";
-			//echo "Value is: " . $_COOKIE[$cookie_name]."<br>";
-			//echo "so anche che il tuo id è :".$row["ID"]."<br>";
-		  }
-
+		
 		//inserting data order
 		$toinsert = "INSERT INTO server1
 			(nome, cognome, nickname, nomeLobby)
@@ -90,8 +88,8 @@
 	}
 	
 ?>
-
-
+<p>ora che sei registrato ti conviene fare il sign-in
+</br>
 </body>
 
 <a href="index.html">Home</a>
