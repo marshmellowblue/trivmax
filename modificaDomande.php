@@ -2,17 +2,23 @@
 <head><title>page</title><link rel="stylesheet" href="home.css"/></head>
 <body>
 </br>
+<ul>
+		<li><a href="home.php" >Home</a></li>
+		<li><a href="./site1/home.html">contatti</a></li>
+		<li><a href="./progetto/progetto.html">Progetto Giudice</a></li>
+		<li><a href="partita.php">Play a Match</a></li>
+	</ul>
     
 	<br>
 	<br>
-	<li><a href="home.php" >Home</a></li>
+	
 	<br>
 
 <?php
 	$servername = "localhost";
-	$username = "root";
+	$username = "websitemassimo";
 	$password = "";
-	$dbname = "trvimax";
+	$dbname = "my_websitemassimo";
 
 	// Crea connessione
 	$conn = new mysqli($servername, $username, $password, $dbname);
@@ -28,7 +34,7 @@
     $risposta2=$_GET["risposta2"];
     $risposta3=$_GET["risposta3"];
     $risposta4=$_GET["risposta4"];
-    $difficoltà=$_GET["difficoltà"];
+    $risposta_corretta=$_GET["risposta_corretta"];
 
 	//conto quante tuple devo cancellare per poter impostare il ciclo di cancellazione
 	//si poteva fare in modo più intelligente gli echo mi servono solo come debug
@@ -42,9 +48,11 @@
 			echo "change " . $spunta . " --> ";
 			
 			//creo la query parametrica
-			$todelete = "UPDATE `lobby` SET domanda='$domanda',risposta1 ='$risposta1',risposta2 ='$risposta2',risposta3 ='$risposta3',risposta4 ='$risposta4',difficoltà ='$difficoltà' 
+			$todelete = "UPDATE `lobby` SET domanda='$domanda',risposta1 ='$risposta1',risposta2 ='$risposta2',risposta3 ='$risposta3',risposta4 ='$risposta4',risposta_corretta ='$risposta_corretta' 
 			WHERE domanda='$spunta' ";
 			
+
+			//$mettirisposta="INSERT INTO lobby (domanda,risposta1,risposta2,risposta3,risposta4,risposta_corretta) VALUES ('domanda','risposta1','risposta2','risposta3','risposta4','risposta_corretta')"
 			//la eseguo
 			if (mysqli_query($conn, $todelete)) {
 				echo "Tupla cambiata con successo <br>";

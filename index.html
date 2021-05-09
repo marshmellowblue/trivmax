@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +33,7 @@
             <div class="card card-3">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title">Registration Info</h2>
+                    <h2 class="title">Login</h2>
                     <form name="modulo" id="modulo" onSubmit="return controllo();" action="home.php" method="POST">
                         <div class="input-group">
                             <input class="input--style-3" type="text" placeholder="Nome Lobby" name="nomeLobby">
@@ -76,27 +75,20 @@
     <script>
         function controllo(){
         with(document.modulo) {
-        if(nome.value=="") {
-             alert("Errore: compilare il campo NOME");
-             nome.focus();
-             return false;
+        
+            if(nomeLobby.value=="") {
+                alert("Errore: compilare il campo nome della lobby");
+                //nome.focus();
+                return false;
+            }
+            if(nickname.value=="") {
+                alert("Errore: compilare il campo nickname");
+                //nome.focus();
+                return false;
+            }
+          
         }
-        if(cognome.value=="") {
-             alert("Errore: compilare il campo COGNOME");
-             cognome.focus();
-             return false;
-        }
-        if(nomeLobby.value=="") {
-             alert("Errore: compilare il campo nome della lobby");
-             nome.focus();
-             return false;
-        }
-        if(nickname.value=="") {
-             alert("Errore: compilare il campo nickname");
-             nome.focus();
-             return false;
-        }
-        }
+            return true;
              
         }
     </script>

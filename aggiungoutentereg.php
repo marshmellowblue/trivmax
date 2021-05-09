@@ -1,5 +1,10 @@
 <html>
-<head><link rel="stylesheet" href="home.css"/><title>HOME</title></head>
+<head><link rel="stylesheet" href="home.css"/><title>HOME</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
 <body>
 	
 	
@@ -8,25 +13,29 @@
 <?php
 	session_start();
 	$_SESSION['nome'] = $_POST['nome'];
-	$_SESSION['nomeLobby']   = $_POST['nomeLobby'];
-	$_SESSION['nickname']=$_POST['nickname'];
+	$_SESSION['nomeLobby'] = $_POST['nomeLobby'];
+	$_SESSION['nickname'] = $_POST['nickname'];
 	$_SESSION['cognome'] = $_POST['cognome'];
-
+	
+	
 	echo '<br /><ul>
-					<li><a href="index.html">login</a></li>
-					<li><a href="./site1/Home.html">contatti</a></li>
-					<li><a href="./progetto/progetto.html">Progetto Giudice</a></li>
-					<li><a href="home.php">home</a></li>
-		</ul>';
+				<li><a href="index.html">login</a></li>
+				<li><a href="./site1/home.html">contatti</a></li>
+				<li><a href="./progetto/progetto.html">Progetto Giudice</a></li>
+				<li><a href="home.php">home</a></li>
+				<li><a href="partita.php">Play a Match</a></li>
+	</ul>';
+
+	
 
 	
 
 	
 
 	$servername = "localhost";
-	$username = "root";
+	$username = "websitemassimo";
 	$password = "";
-	$dbname = "trvimax";
+	$dbname = "my_websitemassimo";
 
 	// Crea connessione
 	$conn = new mysqli($servername, $username, $password, $dbname);
@@ -60,7 +69,7 @@
 		echo "<br>nickname gia scelto per la lobby mi disp cambia nome<br>";
 	}else{
 		echo"<br>SEI PERFETTO<br>";
-		
+	
 
 		echo "BENVENUTO GIOCATORE ".$nome ." ".$cognome."<br>";
 		//controllo del cookie

@@ -1,48 +1,40 @@
 <?php
+  	$servername = "localhost";
+	$username = "websitemassimo";
+	$password = "";
+	$dbname = "my_websitemassimo";
+	// Crea connessione
+	$conn = new mysqli($servername, $username, $password, $dbname);
+
+	// Verifica connessione
+	if ($conn->connect_error) {
+	    die("Connessione fallita: " . $conn->connect_error);
+	} 
+
+    $domanda=$_POST['domanda'];  
+    $getrisposta_corretta= "SELECT risposta_corretta FROM lobby where domanda='$domanda' "; 
+    $risp_corretta=$conn->query($getrisposta_corretta);
+    
+   
+    
+	
+    
 
     $autori = isset($_POST['autori']) ? $_POST['autori'] : array(); //isset ti dice se la variabile è stata definita
     if (!count($autori)) echo 'HAI SBAGLIATO BABBO! NON NE HAI SELEZIONATO NEANCHE UNO!!!'; //!count ti dice se non se nell'array ci sono o meno valori
     elseif (count($autori) >= 2) echo 'HAI SBAGLIATOOOOO BABBO NE HAI SELEZIONATI TROPPI';//same
     else{
-        foreach($autori as $autore) {
-            echo $autore . '<br/>';  
-            if($autore =='George Orwell'){
-                echo "HAI VINTO PASSA PURE AL PROSSIMO LIVELLO";
-            }
-            else if($autore =='1945'){
-                echo "HAI VINTO PASSA PURE AL PROSSIMO LIVELLO";
-            }
-            else if($autore =='mattarella'){
-                echo "HAI VINTO PASSA PURE AL PROSSIMO LIVELLO";
-
-            }else if($autore ==  'un modo per occultare dati'){
-                echo "HAI VINTO PASSA PURE AL PROSSIMO LIVELLO";
-            }else if($autore ==  '3' ){
-                echo "HAI VINTO PASSA PURE AL PROSSIMO LIVELLO";
+    	
+        
+   		 $scrivirisposta = $risp_corretta->fetch_assoc();
+        foreach($autori as $autore){
             
-            }else if($autore ==  '206' ){
-                echo "HAI VINTO PASSA PURE AL PROSSIMO LIVELLO";
-            }else if($autore ==  '365' ){
-                echo "HAI VINTO PASSA PURE AL PROSSIMO LIVELLO";
-            }else if($autore == '4' ){
-                echo "HAI VINTO PASSA PURE AL PROSSIMO LIVELLO";
-            }else if($autore == 'Una Repubblica parlamentare' ){
-                echo "HAI VINTO PASSA PURE AL PROSSIMO LIVELLO";
+            if($autore == $scrivirisposta['risposta_corretta']){
+                echo "HAI RISPOSTO CORRETTAMENTE PASSA PURE AL PROSSIMO LIVELLO";
             }
-            else if($autore == 'Se avessi giocato meglio, tu ed io avremmo vinto' ){
-                echo "HAI VINTO PASSA PURE AL PROSSIMO LIVELLO";
-            }
-            else if($autore == 'poliuretano' ){
-                echo "HAI VINTO PASSA PURE AL PROSSIMO LIVELLO";
-            }
-            else if($autore == 'seta' ){
-                echo "HAI VINTO PASSA PURE AL PROSSIMO LIVELLO";
-            }
-            else if($autore == 'Un sistema elettorale che attribuisce diritto di voto a tutt' ){
-                echo "HAI VINTO PASSA PURE AL PROSSIMO LIVELLO";
-            }
+            
              else{
-                echo "HAI PERSO POLLO <br><br>";
+                echo "HAI RISPOSTO IN MODO ERRATO POLLO <br><br>";
                 $punizione= rand(0,8) ;
                 if($punizione==0){
                      echo"la tua punizione sarà di tornare indietro di 2 caselle";
@@ -76,7 +68,7 @@
           }
     }
    
-    echo"<br><br>aspetta il tuo turno per poter caricare la prossima domanda<br><br><a href=\"partita.php\">torna alla partita<a>";
+    echo"<br><br>aspetta il tuo turno per poter puntare la tua fotocamera al qr code con la prossima  domanda<br><br><a href=\"partita.php\">torna alla partita<a>";
 
 
 	

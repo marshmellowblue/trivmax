@@ -10,21 +10,30 @@
 <?php
   session_start();
   echo	$_SESSION['nickname'] ;
-  echo '<br>'.$_SESSION['nomeLobby']  ; 
+  echo '<br>'.$_SESSION['nomeLobby']  ;
+	
+	
+	if(!isset($_SESSION['nickname'])){
+		echo "<script>window.location = 'http://websitemassimo.altervista.org'</script>";		
+	}
+
+  /*$cookie_name = "utente";
+  $cookie_value = "codice_univoco";
+  setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day*/
  
 
   echo' <ul>
 		<li><a href="home.php">Home</a></li>
-		<li><a href="./site1/Home.html">contatti</a></li>
+		<li><a href="./site1/home.html">contatti</a></li>
 		<li><a href="./progetto/progetto.html">Progetto Giudice</a></li>
+		
 		
 	   </ul>';
 
-    $servername = "localhost";
-	$username = "root";
+  $servername = "localhost";
+	$username = "websitemassimo";
 	$password = "";
-	$dbname = "trvimax";
-
+	$dbname = "my_websitemassimo";
 	// Crea connessione
 	$conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -69,7 +78,7 @@
 			
 			//echo"".$prendiDomanda."<br>";
 			//$tupla = $prendiDomanda->fetch_assoc();
-			echo"<br>".$scriviDomanda["domanda"];
+			
 			/*echo"<br>".$scrivirisposta["risposta1"];
 			echo"<br>".$scrivirisposta2["risposta2"];
 			echo"<br>".$scrivirisposta3["risposta3"];
@@ -78,7 +87,8 @@
 			//serve per gestire le risposte
 
 			echo "<br><form action=\"new 1.php\" method=\"POST\">";
-				echo "<br> <input type=\"checkbox\" name=\"autori[]\" value=\"".$scrivirisposta["risposta1"]."\">";
+			echo"<br> <input type=\"text\" name =\"domanda\"  size=\"80\" value=\"".$scriviDomanda["domanda"]."\">";
+				echo "<br> <input type=\"checkbox\" name=\"autori[]\"  value=\"".$scrivirisposta["risposta1"]."\">";
 				echo"".$scrivirisposta["risposta1"];
 				echo "<br> <input type=\"checkbox\" name=\"autori[]\" value=\"".$scrivirisposta2["risposta2"]."\">";
 				echo"".$scrivirisposta2["risposta2"];
@@ -97,7 +107,7 @@
 
 </table>
 </form>
-	<p>secondi rimasri : </p><div id="countdown"></div>
+	<p>secondi rimasti : </p><div id="countdown"></div>
 	<div id="punizione">
 		
 	</div>
@@ -140,7 +150,7 @@
 				}
 				if(timeLeft==0){
 					alert('Tempo scaduto!!!');
-					document.getElementById("countdown").innerHTML = "hai perso ora devi avere una punizione adeguata <br> <input type=\"button\" value=\"NEXT QUESTION\" onclick=\"window.location.reload()\"><br>aspetta il tuo turno per ricaricare la pagina con la prossima domanda</input><br><br>";
+					document.getElementById("countdown").innerHTML = "hai perso ora devi avere una punizione adeguata aspetta il tuo turno per puntare il qr code di nuovo  con la prossima domanda<br><br>";
 					if(punizione==0){
 						document.getElementById("punizione").innerHTML = "la tua punizione sarà di tornare indietro di 2 caselle";
 					}
