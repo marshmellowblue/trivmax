@@ -40,6 +40,48 @@
 	//echo "Connessione effettuata";
 ?>
 <head>
+<style> 
+
+body {
+  background: url(partita_image.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  text-align:center;
+  line-height: 3.4;
+   font-size: 130%;
+   color: white;
+}
+
+h1 {
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  text-align: center;
+}
+
+h2 {
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  text-align: center;
+}
+.container {
+ 
+  position: left;
+   color: black;
+}
+h3{
+   font-family: "Lucida Console", "Courier New", monospace;
+   line-height: 2.4;
+   font-size: 100%;
+   color: white;
+   text-align: left;
+}
+h4{
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  text-align: center; 
+}
+
+</style>
     <link rel="stylesheet" href="home.css"/>
 	<title>TRIVIAMAX</title>
 </head>
@@ -73,7 +115,7 @@
 	$row = $resultprovas -> fetch_assoc();
 
 	if($num_righe<1  ){
-		echo"<br>mi dispiace non trovo nessuno con questo nickname e questa lobby :(<br>";
+		echo"<br><h4>mi dispiace non trovo nessuno con questo nickname e questa lobby :(</h4><br>";
 		
 		
 	}else{
@@ -84,7 +126,6 @@
 				<li><a href="\\">home</a></li>
 				<li><a href="./site1/home.html">contatti</a></li>
 				<li><a href="./progetto/progetto.html">Progetto Giudice</a></li>
-				<li><a href="partita.php">Play a Match</a></li>
 				<li><a href="sceltamodifica.php">modifica una domanda</a></li>
 			   </ul>';
 			}
@@ -93,29 +134,32 @@
 						<li><a href="\\">home</a></li>
 						<li><a href="./site1/home.html">contatti</a></li>
 						<li><a href="./progetto/progetto.html">Progetto Giudice</a></li>
-						<li><a href="partita.php">Play a Match</a></li>
+						
 			</ul>';
 		}
 		
-		echo "<br><br><div class=\"container\">
-				<button  href=\"#\" title=\"Triviamax\" data-toggle=\"popover\" data-content=\"benvenuto giocatore ".$nickname."\">Click Me</button><br>
-	  		 </div>";
+		echo "<h3>giocatore: ".$_SESSION['nickname']."<br>";
 		//echo "benvenuto giocatore ".$nickname."<br>";
 		$getGiocatori= "SELECT nickname  FROM server1 where nomeLobby='$nomeLobby' "; //ti dice con chi sei in team
 		$prendiGiocatori=$conn->query($getGiocatori);
-		echo "sei in lobby con:<br>";
+		echo "<h3>sei in lobby con: ";
 			while ($tupla = $prendiGiocatori -> fetch_assoc()) {
 				echo" ".$tupla["nickname"]."<br>";
 				
 			}
+            echo "</h3>";
+            echo"<h2>ora che sei dentro, con la telecamera punta il tabellone, piu' precisamente il codice qr per iniziare a giocare</h2>";
 			
-	}		
+	}	
+    	
+       
 
 	 $conn->close();
 ?>
 	<h1>Home Progetto</h1>
 	<br>
-	<h2>Forza che aspetti, clicca Play a match</h2>
+    
+	
 	<br>
 	
 

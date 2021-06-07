@@ -10,7 +10,7 @@
 		<li><a href="home.php" >Home</a></li>
 		<li><a href="./site1/home.html">contatti</a></li>
 		<li><a href="./progetto/progetto.html">Progetto Giudice</a></li>
-		<li><a href="partita.php">Play a Match</a></li>
+		
 	</ul>
 <?php
 	session_start();
@@ -81,7 +81,7 @@
 	$conn->close();
 ?>
 
- <form action="new1.php" method="post">
+ 
     
  	<div class="input-group mb-3">
 		<span class="input-group-text" id="inputGroup-sizing-default">Domanda</span>
@@ -118,13 +118,13 @@
 
 	
 	<br>
-	
-	
-</form>
-<div class="input-group mb-3">
+	<div class="input-group mb-3">
   
   <input type="submit" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload" value="Dopo aver selzionato la riga da modificare clicca qui per la Modifica">
 </div>
+	
+
+
 
 </table>
 </form>

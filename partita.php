@@ -1,5 +1,55 @@
 <html>
+
 <head>
+<style> 
+body {
+ 
+  
+ 
+  background: url(partita_image.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  text-align:center;
+  line-height: 3.4;
+   font-size: 130%;
+   color:white;
+ 
+}
+h1{
+ 	line-height: 1.4;
+	font-size: 80%;
+    text-align:left;
+    color:white;
+}
+input{
+	font-size:90%;
+}
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  transform: scale(2);
+   padding: 10px;
+   
+}
+p{
+ 
+ color:grey;
+  
+}
+#countdown{
+ 
+ color:grey;
+  
+}
+
+
+
+</style>
+<meta charset="utf-8">
 <link rel="stylesheet" href="home.css"/>
 	
 </head>
@@ -9,9 +59,10 @@
 
 <?php
   session_start();
-  echo	$_SESSION['nickname'] ;
-  echo '<br>'.$_SESSION['nomeLobby']  ;
-	
+  	$_SESSION['nickname'] ;
+  	$_SESSION['nomeLobby']  ;
+	echo "<h1> nickname: ".$_SESSION['nickname'] ."</h1>";
+    echo "<h1> nome lobby: ".$_SESSION['nomeLobby'] ."</h1>";
 	
 	if(!isset($_SESSION['nickname'])){
 		echo "<script>window.location = 'http://websitemassimo.altervista.org'</script>";		
@@ -22,13 +73,7 @@
   setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day*/
  
 
-  echo' <ul>
-		<li><a href="home.php">Home</a></li>
-		<li><a href="./site1/home.html">contatti</a></li>
-		<li><a href="./progetto/progetto.html">Progetto Giudice</a></li>
-		
-		
-	   </ul>';
+  
 
   $servername = "localhost";
 	$username = "websitemassimo";
@@ -89,13 +134,13 @@
 			echo "<br><form action=\"new 1.php\" method=\"POST\">";
 			echo"<br> <input type=\"text\" name =\"domanda\"  size=\"80\" value=\"".$scriviDomanda["domanda"]."\">";
 				echo "<br> <input type=\"checkbox\" name=\"autori[]\"  value=\"".$scrivirisposta["risposta1"]."\">";
-				echo"".$scrivirisposta["risposta1"];
-				echo "<br> <input type=\"checkbox\" name=\"autori[]\" value=\"".$scrivirisposta2["risposta2"]."\">";
-				echo"".$scrivirisposta2["risposta2"];
+				echo"  &ensp;&ensp;".$scrivirisposta["risposta1"]."";
+				echo "<br> <input  type=\"checkbox\" name=\"autori[]\" value=\"".$scrivirisposta2["risposta2"]."\">";
+				echo"  &ensp;&ensp;    ".$scrivirisposta2["risposta2"];
 				echo "<br> <input type=\"checkbox\" name=\"autori[]\" value=\"".$scrivirisposta3["risposta3"]."\">";
-				echo"".$scrivirisposta3["risposta3"];
-				echo "<br> <input type=\"checkbox\" name=\"autori[]\" value=\"".$scrivirisposta4["risposta4"]."\">";
-				echo"".$scrivirisposta4["risposta4"];
+				echo"   &ensp;&ensp;   ".$scrivirisposta3["risposta3"];
+				echo "<br> <input   type=\"checkbox\" name=\"autori[]\" value=\"".$scrivirisposta4["risposta4"]."\">";
+				echo"   &ensp;&ensp;   ".$scrivirisposta4["risposta4"];
 				echo "<br> <input type=\"Submit\" value=\"Invio\"/>";
 
 	
@@ -150,34 +195,35 @@
 				}
 				if(timeLeft==0){
 					alert('Tempo scaduto!!!');
-					document.getElementById("countdown").innerHTML = "hai perso ora devi avere una punizione adeguata aspetta il tuo turno per puntare il qr code di nuovo  con la prossima domanda<br><br>";
+                    
+					document.getElementById("countdown").innerHTML = "<p>hai perso ora devi avere una punizione adeguata aspetta il tuo turno per puntare il qr code di nuovo  con la prossima domanda</p<br>";
 					if(punizione==0){
-						document.getElementById("punizione").innerHTML = "la tua punizione sarà di tornare indietro di 2 caselle";
+						document.getElementById("punizione").innerHTML = "<p>la tua punizione sarà di tornare indietro di 2 caselle</p>";
 					}
 					if(punizione==1){
-						document.getElementById("punizione").innerHTML = "la tua punizione sarà di andare in prigione per un turno";
+						document.getElementById("punizione").innerHTML = "<p>la tua punizione sarà di andare in prigione per un turno</p>";
 					}
 					if(punizione==2){
-						document.getElementById("punizione").innerHTML = "la tua punizione sarà di andare infilarti un dito nel naso per i prossimi due turni";
+						document.getElementById("punizione").innerHTML = "<p>la tua punizione sarà di andare infilarti un dito nel naso per i prossimi due turni</p>";
 					}
 					if(punizione==3){
-						document.getElementById("punizione").innerHTML = "la tua punizione sarà diretrocedere di ben 3 caselle";
+						document.getElementById("punizione").innerHTML = "<p>la tua punizione sarà di retrocedere di ben 3 caselle</p>";
 					}
 					if(punizione==4){
-						document.getElementById("punizione").innerHTML = "la tua punizione sarà di saltellare su un piede per 4 volte";
+						document.getElementById("punizione").innerHTML = "<p>la tua punizione sarà di saltellare su un piede per 4 volte</p>";
 					}
 					if(punizione==5){
-						document.getElementById("punizione").innerHTML = "la tua punizione sarà di effettuare quattro piegamenti sulle braccia";
+						document.getElementById("punizione").innerHTML = "<p>la tua punizione sarà di effettuare quattro piegamenti sulle braccia</p>";
 					}
 					if(punizione==6){
-						document.getElementById("punizione").innerHTML = "la tua punizione sarà di andare in prigione per due turni";
+						document.getElementById("punizione").innerHTML = "<p>la tua punizione sarà di andare in prigione per due turni</p>";
 					}
 					if(punizione==7){
-						document.getElementById("punizione").innerHTML = "la tua punizione sarà di fare due giri in torno a te e i tuoi compagni dovranno prenderti in giro";
+						document.getElementById("punizione").innerHTML = "<p>la tua punizione sarà di fare due giri in torno a te e i tuoi compagni dovranno prenderti in giro</p>";
 					}
 					
 					if(punizione==8){
-						document.getElementById("punizione").innerHTML = "la tua punizione sarà di dover effettuare un prova fisica a tua scelta";	
+						document.getElementById("punizione").innerHTML = "<p>la tua punizione sarà di dover effettuare un prova fisica a tua scelta</p>";	
 					}
 				}
 						if(timeLeft<=0){

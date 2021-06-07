@@ -1,3 +1,24 @@
+<style> 
+body {
+ 
+  
+ 
+  background: url(partita_image.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  text-align:center;
+  line-height: 3.4;
+  font-size: 130%;
+  color:white;
+ 
+}
+h1{
+ 	line-height: 1.4;
+	font-size: 80%;
+    text-align:left;
+}
+</style>
+
 <?php
   	$servername = "localhost";
 	$username = "websitemassimo";
@@ -11,26 +32,41 @@
 	    die("Connessione fallita: " . $conn->connect_error);
 	} 
 
-    $domanda=$_POST['domanda'];  
-    $getrisposta_corretta= "SELECT risposta_corretta FROM lobby where domanda='$domanda' "; 
+    $domanda=$_POST['domanda'];
+    $question=str_replace("'","''","$domanda");
+    //SELECT Name FROM Customers WHERE Name LIKE '\%AAA%' {escape '\'}
+    $getrisposta_corretta= "SELECT risposta_corretta FROM lobby where domanda = '$question '  "; 
     $risp_corretta=$conn->query($getrisposta_corretta);
     
+    $scrivirisposta= $risp_corretta -> fetch_assoc();
    
+    $risposta=str_replace("Array","","$scrivirisposta");
     
-	
+    
+
     
 
     $autori = isset($_POST['autori']) ? $_POST['autori'] : array(); //isset ti dice se la variabile è stata definita
-    if (!count($autori)) echo 'HAI SBAGLIATO BABBO! NON NE HAI SELEZIONATO NEANCHE UNO!!!'; //!count ti dice se non se nell'array ci sono o meno valori
-    elseif (count($autori) >= 2) echo 'HAI SBAGLIATOOOOO BABBO NE HAI SELEZIONATI TROPPI';//same
+    if (!count($autori)){
+    	echo 'HAI SBAGLIATO BABBO! NON NE HAI SELEZIONATO NEANCHE UNO!!!<br> solo perche\' sei un po\' imbecille ti lascio la nel poslto in cui ti trovi';
+    } //!count ti dice se non se nell'array ci sono o meno valori
+    
+    elseif (count($autori) >= 2) echo 'HAI SBAGLIATOOOOO BABBO NE HAI SELEZIONATI TROPPI<br> ti meriti degli insulti ma solo quelli, niente punizione';//same
     else{
-    	
-        
-   		 $scrivirisposta = $risp_corretta->fetch_assoc();
-        foreach($autori as $autore){
-            
+        foreach($autori as $autore) {
+            echo $autore . '<br/>';  
             if($autore == $scrivirisposta['risposta_corretta']){
-                echo "HAI RISPOSTO CORRETTAMENTE PASSA PURE AL PROSSIMO LIVELLO";
+                echo "HAI RISPOSTO CORRETTAMENTE<br> ";
+                $corretta= rand(0,2) ;
+                if($corretta==0){
+                     echo"Vai avanti di 2 caselle";
+                }
+                if($corretta==1){
+                     echo"Vai avanti di 1 casella";
+                }
+                if($corretta==2){
+                     echo"Vai avanti di 3 caselle";
+                }
             }
             
              else{
@@ -68,8 +104,6 @@
           }
     }
    
-    echo"<br><br>aspetta il tuo turno per poter puntare la tua fotocamera al qr code con la prossima  domanda<br><br><a href=\"partita.php\">torna alla partita<a>";
+    echo"<br><br>aspetta il tuo turno per poter puntare la tua fotocamera al qr code con la prossima  domanda<br><br>";
 
-
-	
 ?>

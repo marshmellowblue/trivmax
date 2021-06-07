@@ -1,5 +1,7 @@
 <html>
-<head><link rel="stylesheet" href="home.css"/><title>HOME</title>
+<head>
+
+<link rel="stylesheet" href="home.css"/><title>HOME</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -13,19 +15,21 @@
 <?php
 	session_start();
 	$_SESSION['nome'] = $_POST['nome'];
-	$_SESSION['nomeLobby'] = $_POST['nomeLobby'];
-	$_SESSION['nickname'] = $_POST['nickname'];
+	$_SESSION['nomeLobby']   = $_POST['nomeLobby'];
+	$_SESSION['nickname']=$_POST['nickname'];
 	$_SESSION['cognome'] = $_POST['cognome'];
-	
-	
-	echo '<br /><ul>
-				<li><a href="index.html">login</a></li>
-				<li><a href="./site1/home.html">contatti</a></li>
-				<li><a href="./progetto/progetto.html">Progetto Giudice</a></li>
-				<li><a href="home.php">home</a></li>
-				<li><a href="partita.php">Play a Match</a></li>
-	</ul>';
 
+
+	
+		echo '<br />
+        <ul>
+        				<li><a href="index.html">login</a></li>
+						<li><a href="home.php">home</a></li>
+						<li><a href="./site1/home.html">contatti</a></li>
+						<li><a href="./progetto/progetto.html">Progetto Giudice</a></li>
+						
+			</ul>';
+	
 	
 
 	
@@ -66,7 +70,7 @@
 	//controllo campi con campi strani.. ci si prova!
 
 	if($confronto>=1){
-		echo "<br>nickname gia scelto per la lobby mi disp cambia nome<br>";
+		echo "<br><p>nickname gia scelto per la lobby mi disp cambia nome</p><br>";
 	}else{
 		echo"<br>SEI PERFETTO<br>";
 	
@@ -89,6 +93,8 @@
 		//lo uso direttamente in un if per gestire un eventuale errore
 		if (mysqli_query($conn, $toinsert)) {
 			//echo "New record created successfully";
+            echo "<h1>sei dentro, vai nella fotocamera e punta il qrcode nel tabellone per fare una partita</h1><br>
+				<p>altrimenti vai a fare il sign-in premendo su home</p>";
 		} 
 		else {
 			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -97,9 +103,32 @@
 	}
 	
 ?>
-<p>ora che sei registrato ti conviene fare il sign-in
-</br>
+<style>
+body {
+  background: url(partita_image.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  text-align:center;
+  line-height: 3.4;
+   font-size: 130%;
+   color: white;
+}
+
+h1 {
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  text-align: center;
+}
+</style>
+
+<br>
 </body>
 
-<a href="index.html">Home</a>
+
 </html>
